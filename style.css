@@ -1,0 +1,51 @@
+@import url("https://fonts.google.com/specimen/Nunito+Sans");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    /* Light Mode Colors */
+    --lightModeBackground: hsl(0, 0%, 98%);
+    --lightModeText: hsl(200, 15%, 8%);
+    --lightModeInput:  hsl(0, 0%, 52%);
+    --lightModeElements: hsl(0, 0%, 100%);
+    /* Dark Mode Colors */
+    --darkModeBackground: hsl(207, 26%, 17%);
+    --darkModeElements: hsl(209, 23%, 22%);
+    --darkModeText: hsl(0, 0%, 100%);
+    /* Text Font */
+    --textFont: 'Nunito Sans', sans-serif;
+}
+body {
+    background: var(--lightModeBackground);
+    font-family: var(--textFont);
+}
+.a-header {
+    background: var(--lightModeElements);
+    padding: 30px 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.h-header__themeSwitch {
+    font-weight: 600;
+    font-size: 14px;
+}
+.h-header__themeSwitch span {
+    display: inline-block;
+    text-indent: 6px;
+}
+.h-header__icon {
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+}
+@media (max-width: 375px) { /* Mobile first */
+    .a-header__title h1 {
+        font-size: 20px;
+    }
+    .a-header__themeSwitch {
+        font-size: 14px;
+    }
+}
