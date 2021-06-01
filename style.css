@@ -64,20 +64,57 @@ body {
     border-radius: 5px;
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
+    cursor: text;
+}
+.b-inputs__searchBox input:focus {
+    outline: 0;
 }
 .b-inputs__searchIcon {
     color: rgb(165, 165, 165);
     position: absolute;
     left: 30px;
     top: 13px;
+    cursor: pointer;
 }
 .b-inputs__filterBox select {
-    padding: 12px 20px;
+    padding: 12px 50px 12px 20px;
     width: 100%;
     border: none;
     border-radius: 5px;
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
+    background-size: 12px;
+    background-position-x: calc(100% - 10px);
+
+}
+.b-inputs__filterBox select:focus {
+    outline: 0;
+}
+/* Countries Section */
+.c-countries {
+    background: red;
+    height: fit-content;
+    padding: 30px 20px;
+}
+.c-countries__list {
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+}
+.c-countries__list li {
+    background:var(--lightModeElements);
+    border-radius: 5px;
+    box-shadow: var(--elementsShadowBottom),
+    var(--elementsShadowTop);
+}
+.c-countries__list li img {
+    max-width: 100%;
 }
 @media (max-width: 768px) {
     .b-inputs {

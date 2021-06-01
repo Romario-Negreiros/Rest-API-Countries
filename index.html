@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend Mentor Challenge</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <script src="https://kit.fontawesome.com/d40fe3ba5a.js" crossorigin="anonymous"></script>
 </head>
 
@@ -23,12 +23,12 @@
 
     <section class="b-inputs">
         <div class="b-inputs__searchBox">
-            <input type="search" name="country" placeholder="Search for a country...">
+            <input type="search" id="search" name="country" placeholder="Search for a country...">
             <i class="fas fa-search b-inputs__searchIcon"></i>
         </div>
 
         <div class="b-inputs__filterBox">
-            <select>
+            <select id="filter">
                 <option selected disabled value="">Filter by Region</option>
                 <option value="africa">Africa</option>
                 <option value="america">America</option>
@@ -37,6 +37,21 @@
                 <option value="oceania">Oceania</option>
             </select>
         </div>
+    </section>
+
+    <section class="c-countries">
+        <ul class="c-countries__list">
+            <li>
+                <img id="images"src="" alt="">
+                <div class="c-countries__infos">
+                    <h2 id="name"></h2>
+                    <p id="population"></p>
+                    <p id="region"></p>
+                    <p id="capital"></p>
+                </div>
+
+            </li>
+        </ul>
     </section>
 </body>
 <script src="./script.js"></script>
