@@ -66,6 +66,7 @@ body {
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
     cursor: text;
+    background-color: var(--lightModeElements);
 }
 .b-inputs__searchBox input:focus {
     outline: 0;
@@ -90,7 +91,7 @@ body {
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
     background-size: 12px;
     background-position-x: calc(100% - 10px);
-
+    background-color: var(--lightModeElements);
 }
 .b-inputs__filterBox select:focus {
     outline: 0;
@@ -120,22 +121,27 @@ body {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.c-countries__infos {
+.c-countries__list li h3 {
     width: 100%;
     margin-top: 15px;
     text-indent: 25px;
-}
-.c-countries__infos h3 {
     font-weight: 800;
 }
-.c-countries__infos p {
+.c-countries__list li p {
     font-size: 14px;
+    text-indent: 25px;
 }
-.c-countries__infos :nth-child(2) {
+.c-countries__list li :nth-child(2) {
     margin-top: 15px;
 }
-.c-countries__infos :nth-child(n + 3) {
+.c-countries__list li :nth-child(n + 3) {
     margin-top: 10px;
+}
+@media (max-width: 900px) {
+    /* Countries section */
+    .c-countries__list {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 @media (max-width: 768px) { /* Tablets */
     /* Search and filter fields */
