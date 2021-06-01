@@ -79,10 +79,19 @@ body {
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
 }
-.b-inputs__filterBox option {
-    border: 0;
-    border-radius: 5px;
-    z-index: 9999;
+@media (max-width: 768px) {
+    .b-inputs {
+      flex-flow: column wrap;
+    }
+    .b-inputs__searchBox {
+        width: 100%;
+    }
+    .b-inputs__filterBox {
+        margin-top: 40px;
+    }
+    .b-inputs__filterBox select {
+        width: 50%;
+    }
 }
 @media (max-width: 375px) { /* Mobile first */
     /* Header */
@@ -91,18 +100,5 @@ body {
     }
     .a-header__themeSwitch {
         font-size: 14px;
-    }
-    /* Search and filter fields */
-    .b-inputs__searchBox {
-        width: 100%;
-    }
-    .b-inputs {
-        flex-flow: column wrap;
-    }
-    .b-inputs__filterBox {
-        margin-top: 40px;
-    }
-    .b-inputs__filterBox select {
-        width: 50%;
     }
 }
