@@ -79,26 +79,33 @@ body {
     top: 13px;
     cursor: pointer;
 }
-.b-inputs__filterBox select {
+.b-inputs__filterBox div {
     padding: 12px 50px 12px 20px;
+    font-size: 14px;
     width: 100%;
-    border: none;
     border-radius: 5px;
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
     cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
     background-size: 12px;
     background-position-x: calc(100% - 10px);
     background-color: var(--lightModeElements);
 }
-.b-inputs__filterBox select:focus {
-    outline: 0;
+/* Dropdown */
+.dropdown {
+    margin-top: 3px;
+    display: none;
 }
-option {
-    font-size: 14px;
+.option {
+    margin-top: 5px;
+    transition: .2s;
+}
+.option:hover {
+    opacity: 0.5;
+}
+.dropdown--display {
+    display: block;
 }
 /* Countries section */
 .c-countries {
@@ -169,6 +176,11 @@ option {
     background-size: 12px;
     background-position-x: calc(100% - 10px);
     background-color: var(--darkModeElements);
+}
+.b-inputs__filterBox .dropdown--active {
+    background: var(--darkModeElements);
+    color: var(--darkModeText);
+    box-shadow: none;
 }
 @media (max-width: 900px) {
     /* Countries section */

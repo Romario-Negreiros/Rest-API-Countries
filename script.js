@@ -71,18 +71,20 @@ input.addEventListener('keydown', (key) => {
 })
 /* Through filter */
 filter.addEventListener('click', () => {
-    filter.addEventListener('click', lookForRegion)
-    filter.addEventListener('blur', () => {
-        filter.removeEventListener('click', lookForRegion)
-    })
+    document.querySelector('.dropdown').classList.add('dropdown--display')
 })
-function lookForRegion() {
+const [...options] = document.querySelectorAll('.option')
+options.forEach((v) => {
+    v.addEventListener('click', lookForRegion)
+})
+function lookForRegion(e) {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
-    const option = filter.options[filter.selectedIndex].text
+    console.log(e.target.innerHTML)
+    const option = e.target.innerHTML
     errorTreatment(option)
-    filter.removeEventListener('click', lookForRegion)
+    document.querySelector('.dropdown').classList.remove('dropdown--display')
 }
 /* Insert Information */
 function insertingInfos(v, i, neededData) {
@@ -97,10 +99,8 @@ function gettingDataFiltered(countries, searchWord) {
     let lowerCase = ''
     let firstLetterUpperCased = ''
     const filterCountries = countries.filter((v) => {
-        if (searchWord == filter.options[filter.selectedIndex].text) {
-            if (v.region.includes(searchWord)) return v
-            else return false
-        } else {
+        if (searchWord === v.region) return v
+        else {
             lowerCase = searchWord.slice(+1).toLowerCase()
             firstLetterUpperCased = searchWord.charAt(0).toUpperCase()
             if (v.name.includes(`${firstLetterUpperCased}${lowerCase}`)) return v
@@ -125,6 +125,7 @@ swapTheme.addEventListener('click', () => {
     countriesList.classList.toggle('c-countries__list--active')
     input.classList.toggle('input--active')
     filter.classList.toggle('filter--active')
+    document.querySelector('.dropdown').classList.toggle('dropdown--active')
     /* Change icon for sun and span text for light mode */
     document.querySelector('.darkMode').classList.toggle('moon-inative')
     document.querySelector('.lightMode').classList.toggle('sun-active')
