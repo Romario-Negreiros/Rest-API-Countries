@@ -43,27 +43,52 @@ const errorTreatment = async function (searchWord) {
     }
 }
 /* Search mechanisms */
+/* Through search box */
 search.addEventListener('click', () => {
-    while(countriesList.firstChild) {
+    while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
     let string = input.value
     errorTreatment(string)
 })
 input.addEventListener('focusout', () => {
-    while(countriesList.firstChild) {
+    while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
     let string = input.value
     errorTreatment(string)
 })
 input.addEventListener('keydown', (key) => {
-    if(key.keyCode === 13) {
-    while(countriesList.firstChild) {
+    if (key.keyCode === 13) {
+        while (countriesList.firstChild) {
+            countriesList.removeChild(countriesList.firstChild)
+        }
+        let string = input.value
+        errorTreatment(string)
+    }
+})
+/* Through filter */
+filter.addEventListener('click', () => {
+    while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
-    let string = input.value
-    errorTreatment(string)
+    const option = filter.options[filter.selectedIndex].text
+    switch (option) {
+        case 'Africa':
+            errorTreatment(option)
+            break
+        case 'America':
+            errorTreatment(option)
+            break
+        case 'Asia':
+            errorTreatment(option)
+            break
+        case 'Europe':
+            errorTreatment(option)
+            break
+        case 'Oceania':
+            errorTreatment(option)
+            break
     }
 })
 /* Insert Information */
@@ -78,10 +103,15 @@ function insertInfos(countries, searchWord) {
     let lowerCase = ''
     let firstLetterUpperCased = ''
     const threeFirst = countries.filter((v) => {
-        lowerCase = searchWord.slice(+1).toLowerCase()
-        firstLetterUpperCased = searchWord.charAt(0).toUpperCase()
-        if(v.name.includes(`${firstLetterUpperCased}${lowerCase}`)) return v
-        else return false
+        if (searchWord == filter.options[filter.selectedIndex].text) {
+            if (v.region.includes(searchWord)) return v
+            else return false
+        } else {
+            lowerCase = searchWord.slice(+1).toLowerCase()
+            firstLetterUpperCased = searchWord.charAt(0).toUpperCase()
+            if (v.name.includes(`${firstLetterUpperCased}${lowerCase}`)) return v
+            else return false
+        }
     })
     for (let x in threeFirst) new item()
     const neededData = []
