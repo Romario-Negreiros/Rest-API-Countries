@@ -36,7 +36,7 @@ const errorTreatment = async function (searchWord) {
     try {
         const countries = await fetchCountries()
         console.log(countries)
-        insertInfos(countries, searchWord)
+        gettingDataFiltered(countries, searchWord)
     }
     catch (err) {
         console.error(err.message)
@@ -51,7 +51,7 @@ search.addEventListener('click', () => {
     let string = input.value
     errorTreatment(string)
 })
-input.addEventListener('focusout', () => {
+input.addEventListener('blur', () => {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
@@ -69,6 +69,10 @@ input.addEventListener('keydown', (key) => {
 })
 /* Through filter */
 filter.addEventListener('click', () => {
+    filter.addEventListener('mouseout', lookForRegion)
+    filter.addEventListener('blur', lookForRegion)
+})
+function lookForRegion() {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
@@ -76,33 +80,44 @@ filter.addEventListener('click', () => {
     switch (option) {
         case 'Africa':
             errorTreatment(option)
+            filter.removeEventListener('blur', lookForRegion)
+            filter.removeEventListener('mouseout', lookForRegion)
             break
         case 'America':
             errorTreatment(option)
+            filter.removeEventListener('blur', lookForRegion)
+            filter.removeEventListener('mouseout', lookForRegion)
             break
         case 'Asia':
             errorTreatment(option)
+            filter.removeEventListener('blur', lookForRegion)
+            filter.removeEventListener('mouseout', lookForRegion)
             break
         case 'Europe':
             errorTreatment(option)
+            filter.removeEventListener('blur', lookForRegion)
+            filter.removeEventListener('mouseout', lookForRegion)
             break
         case 'Oceania':
             errorTreatment(option)
+            filter.removeEventListener('blur', lookForRegion)
+            filter.removeEventListener('mouseout', lookForRegion)
             break
     }
-})
+}
 /* Insert Information */
-function itemsElements(v, i, neededData) {
+function insertingInfos(v, i, neededData) {
     v[0].src = neededData[i][0]
     v[1].innerHTML = neededData[i][1]
     v[2].innerHTML = `<strong>Population: </strong>${neededData[i][2]}`
     v[3].innerHTML = `<strong>Region: </strong>${neededData[i][3]}`
     v[4].innerHTML = `<strong>Capital: </strong>${neededData[i][4]}`
 }
-function insertInfos(countries, searchWord) {
+/* Filtering data */
+function gettingDataFiltered(countries, searchWord) {
     let lowerCase = ''
     let firstLetterUpperCased = ''
-    const threeFirst = countries.filter((v) => {
+    const filterCountries = countries.filter((v) => {
         if (searchWord == filter.options[filter.selectedIndex].text) {
             if (v.region.includes(searchWord)) return v
             else return false
@@ -113,13 +128,13 @@ function insertInfos(countries, searchWord) {
             else return false
         }
     })
-    for (let x in threeFirst) new item()
+    for (let x in filterCountries) new item()
     const neededData = []
-    threeFirst.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
+    filterCountries.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
     const [...iterateItems] = countriesList.children
     const li = []
     iterateItems.map(v => li.push([...v.children]))
     li.forEach((v, i) => {
-        v.forEach(() => itemsElements(v, i, neededData))
+        v.forEach(() => insertingInfos(v, i, neededData))
     })
 }
