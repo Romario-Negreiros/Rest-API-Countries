@@ -2,14 +2,9 @@
 /* Inputs */
 const input = document.querySelector('#search')
 const filter = document.querySelector('#filter')
+const search = document.querySelector('.fa-search')
 /* Countries list */
 const countriesList = document.querySelector('.c-countries__list')
-/* Item data */
-const img = document.querySelector('#images')
-const countryName = document.querySelector('#name')
-const population = document.querySelector('#population')
-const region = document.querySelector('#region')
-const capital = document.querySelector('#capital')
 /* Class for item creation */
 class item {
     constructor() {
@@ -32,22 +27,45 @@ class item {
     }
 }
 /* Requests */
-const fetchCountries = async function (url) {
-    const response = await fetch(url)
+const fetchCountries = async function () {
+    const response = await fetch('https://restcountries.eu/rest/v2/all')
     const JSON = await response.json()
     return JSON
 }
-const errorTreatment = async function (url) {
+const errorTreatment = async function (searchWord) {
     try {
-        const countries = await fetchCountries(url)
+        const countries = await fetchCountries()
         console.log(countries)
-        insertInfos(countries)
+        insertInfos(countries, searchWord)
     }
     catch (err) {
         console.error(err.message)
     }
 }
-errorTreatment('https://restcountries.eu/rest/v2/all')
+/* Search mechanisms */
+search.addEventListener('click', () => {
+    while(countriesList.firstChild) {
+        countriesList.removeChild(countriesList.firstChild)
+    }
+    let string = input.value
+    errorTreatment(string)
+})
+input.addEventListener('focusout', () => {
+    while(countriesList.firstChild) {
+        countriesList.removeChild(countriesList.firstChild)
+    }
+    let string = input.value
+    errorTreatment(string)
+})
+input.addEventListener('keydown', (key) => {
+    if(key.keyCode === 13) {
+    while(countriesList.firstChild) {
+        countriesList.removeChild(countriesList.firstChild)
+    }
+    let string = input.value
+    errorTreatment(string)
+    }
+})
 /* Insert Information */
 function itemsElements(v, i, neededData) {
     v[0].src = neededData[i][0]
@@ -56,8 +74,15 @@ function itemsElements(v, i, neededData) {
     v[3].innerHTML = `<strong>Region: </strong>${neededData[i][3]}`
     v[4].innerHTML = `<strong>Capital: </strong>${neededData[i][4]}`
 }
-function insertInfos(countries) {
-    const threeFirst = countries.filter((v, i) => i < 250)
+function insertInfos(countries, searchWord) {
+    let lowerCase = ''
+    let firstLetterUpperCased = ''
+    const threeFirst = countries.filter((v) => {
+        lowerCase = searchWord.slice(+1).toLowerCase()
+        firstLetterUpperCased = searchWord.charAt(0).toUpperCase()
+        if(v.name.includes(`${firstLetterUpperCased}${lowerCase}`)) return v
+        else return false
+    })
     for (let x in threeFirst) new item()
     const neededData = []
     threeFirst.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
