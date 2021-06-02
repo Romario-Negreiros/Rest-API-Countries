@@ -22,10 +22,11 @@
 body {
     background: var(--lightModeBackground);
     font-family: var(--textFont);
+    color: var(--lightModeText);
 }
 /* Header */
 .a-header {
-    background: var(--lightModeElements);
+    background: var(--lightModeElements); 
     padding: 30px 20px;
     box-shadow: var(--elementsShadowBottom);
     display: flex;
@@ -96,6 +97,9 @@ body {
 .b-inputs__filterBox select:focus {
     outline: 0;
 }
+option {
+    font-size: 14px;
+}
 /* Countries section */
 .c-countries {
     height: fit-content;
@@ -109,8 +113,8 @@ body {
     gap: 60px;
 }
 .c-countries__list li {
-    background:var(--lightModeElements);
-    border-radius: 5px;
+    background:var(--lightModeElements); 
+    border-radius: 5px; 
     max-width: fit-content;
     padding-bottom: 35px;
     box-shadow: var(--elementsShadowBottom),
@@ -136,6 +140,35 @@ body {
 }
 .c-countries__list li :nth-child(n + 3) {
     margin-top: 10px;
+}
+/* Color switch */
+.lightMode {
+    display: none;
+}
+/* Dark Mode */
+.moon-inative {
+    display: none;
+}
+.sun-active {
+    display: flex;
+}
+.body--active {
+    background: var(--darkModeBackground);
+    color: var(--darkModeText);
+}
+.a-header--active, 
+.b-inputs__searchBox .input--active, 
+.b-inputs__filterBox .filter--active, 
+.c-countries__list--active li {
+    background: var(--darkModeElements);
+    box-shadow: none;
+    color: var(--darkModeText);
+}
+.b-inputs__filterBox .filter--active {
+    background: url(http://vfconsultoria.com/wp-content/uploads/2018/07/ICON-SETA-BRANCA-baixo.png) no-repeat right;
+    background-size: 12px;
+    background-position-x: calc(100% - 10px);
+    background-color: var(--darkModeElements);
 }
 @media (max-width: 900px) {
     /* Countries section */

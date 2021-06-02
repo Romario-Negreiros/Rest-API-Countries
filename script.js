@@ -1,4 +1,6 @@
 /* Global Variables */
+/* Theme switch */
+const swapTheme = document.querySelector('#themeSwitch')
 /* Inputs */
 const input = document.querySelector('#search')
 const filter = document.querySelector('#filter')
@@ -69,41 +71,18 @@ input.addEventListener('keydown', (key) => {
 })
 /* Through filter */
 filter.addEventListener('click', () => {
-    filter.addEventListener('mouseout', lookForRegion)
-    filter.addEventListener('blur', lookForRegion)
+    filter.addEventListener('click', lookForRegion)
+    filter.addEventListener('blur', () => {
+        filter.removeEventListener('click', lookForRegion)
+    })
 })
 function lookForRegion() {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
     const option = filter.options[filter.selectedIndex].text
-    switch (option) {
-        case 'Africa':
-            errorTreatment(option)
-            filter.removeEventListener('blur', lookForRegion)
-            filter.removeEventListener('mouseout', lookForRegion)
-            break
-        case 'America':
-            errorTreatment(option)
-            filter.removeEventListener('blur', lookForRegion)
-            filter.removeEventListener('mouseout', lookForRegion)
-            break
-        case 'Asia':
-            errorTreatment(option)
-            filter.removeEventListener('blur', lookForRegion)
-            filter.removeEventListener('mouseout', lookForRegion)
-            break
-        case 'Europe':
-            errorTreatment(option)
-            filter.removeEventListener('blur', lookForRegion)
-            filter.removeEventListener('mouseout', lookForRegion)
-            break
-        case 'Oceania':
-            errorTreatment(option)
-            filter.removeEventListener('blur', lookForRegion)
-            filter.removeEventListener('mouseout', lookForRegion)
-            break
-    }
+    errorTreatment(option)
+    filter.removeEventListener('click', lookForRegion)
 }
 /* Insert Information */
 function insertingInfos(v, i, neededData) {
@@ -138,3 +117,15 @@ function gettingDataFiltered(countries, searchWord) {
         v.forEach(() => insertingInfos(v, i, neededData))
     })
 }
+/* Theme switch */
+swapTheme.addEventListener('click', () => {
+    /* Change elements back, body back, and body text */
+    document.body.classList.toggle('body--active')
+    document.querySelector('.a-header').classList.toggle('a-header--active')
+    countriesList.classList.toggle('c-countries__list--active')
+    input.classList.toggle('input--active')
+    filter.classList.toggle('filter--active')
+    /* Change icon for sun and span text for light mode */
+    document.querySelector('.darkMode').classList.toggle('moon-inative')
+    document.querySelector('.lightMode').classList.toggle('sun-active')
+})
