@@ -96,6 +96,7 @@ body {
 .dropdown {
     margin-top: 3px;
     display: none;
+    background: var(--lightModeElements) !important;
 }
 .option {
     margin-top: 5px;
@@ -178,7 +179,7 @@ body {
     background-color: var(--darkModeElements);
 }
 .b-inputs__filterBox .dropdown--active {
-    background: var(--darkModeElements);
+    background: var(--darkModeElements) !important;
     color: var(--darkModeText);
     box-shadow: none;
 }
