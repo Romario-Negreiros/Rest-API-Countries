@@ -37,7 +37,6 @@ const fetchCountries = async function () {
 const errorTreatment = async function (searchWord) {
     try {
         const countries = await fetchCountries()
-        console.log(countries)
         gettingDataFiltered(countries, searchWord)
     }
     catch (err) {
@@ -53,18 +52,20 @@ search.addEventListener('click', () => {
     let string = input.value
     errorTreatment(string)
 })
-input.addEventListener('blur', () => {
+if(window.innerWidth < 770) {
+    input.addEventListener('blur', () => {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
     let string = input.value
     errorTreatment(string)
 })
+}
 input.addEventListener('keydown', (key) => {
+    while (countriesList.firstChild) {
+        countriesList.removeChild(countriesList.firstChild)
+    }
     if (key.keyCode === 13) {
-        while (countriesList.firstChild) {
-            countriesList.removeChild(countriesList.firstChild)
-        }
         let string = input.value
         errorTreatment(string)
     }
@@ -81,7 +82,6 @@ function lookForRegion(e) {
     while (countriesList.firstChild) {
         countriesList.removeChild(countriesList.firstChild)
     }
-    console.log(e.target.innerHTML)
     const option = e.target.innerHTML
     errorTreatment(option)
     document.querySelector('.dropdown').classList.remove('dropdown--display')
@@ -107,6 +107,7 @@ function gettingDataFiltered(countries, searchWord) {
             else return false
         }
     })
+    console.log(filterCountries.length)
     for (let x in filterCountries) new item()
     const neededData = []
     filterCountries.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
