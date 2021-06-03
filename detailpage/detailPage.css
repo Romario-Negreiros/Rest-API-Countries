@@ -135,7 +135,7 @@ h3 {
     background: var(--darkModeBackground);
     color: var(--darkModeText);
 }
-.a-header--active {
+.a-header--active, .borderCountries--active, .b-country .back--active {
     background: var(--darkModeElements);
     box-shadow: none;
     color: var(--darkModeText);
