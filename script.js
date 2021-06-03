@@ -18,6 +18,10 @@ class item {
         this.capital = document.createElement('p')
         this.insertAttributesInsideImg()
         this.insertItemsInsideLi()
+        this.insertClass()
+    }
+    insertClass() {
+        this.countryName.classList.toggle('countryName')
     }
     insertAttributesInsideImg() {
         this.img.setAttribute('src', " ")
@@ -108,11 +112,11 @@ function gettingDataFiltered(countries, searchWord) {
         }
     })
     for (let x in filterCountries) new item()
-    const [...addingEvents] = countriesList.children
+    const [...addingEvents] = document.querySelectorAll('.countryName')
     addingEvents.forEach(v => {
-        v.addEventListener('click', () => {
+        v.addEventListener('click', (e) => {
             if (typeof (Storage) !== 'undefined') {
-                const name = document.querySelector('li h3').innerHTML
+                const name = e.target.innerHTML
                 sessionStorage.setItem('countryNameToFetch', name)
                 window.location.assign('./detailPage.html')
             } else alert('Sorry, but your browser doesn\'t support HTML5 web storage')

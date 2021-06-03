@@ -127,7 +127,6 @@ body {
     padding-bottom: 35px;
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
-    cursor: pointer;
 }
 .c-countries__list li img {
     max-width: 100%;
@@ -139,6 +138,10 @@ body {
     margin-top: 15px;
     text-indent: 25px;
     font-weight: 800;
+    cursor: pointer;
+}
+.c-countries__list li h3:hover {
+    opacity: 0.5;
 }
 .c-countries__list li p {
     font-size: 14px;
