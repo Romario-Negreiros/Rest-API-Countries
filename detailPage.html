@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./detailPage/detailPage.css">
+    <script src="https://kit.fontawesome.com/d40fe3ba5a.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    oi
-    <a href="index.html">banana</a>
+    <header class="a-header">
+        <div class="a-header__title">
+            <h1>Where in the world?</h1>
+        </div>
+        <div id="themeSwitch" class="h-header__themeSwitch">
+            <div class="darkMode">
+                <i class="far fa-moon h-header__icon"></i> <span>Dark Mode</span>
+            </div>
+            <div class="lightMode">
+                <i class="fas fa-sun h-header-icon"></i> <span>Light Mode</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="b-country">
+        <a href="./index.html"><i class="fas fa-long-arrow-alt-left"></i>Back</a>
+        <ul class="b-country__dataList">
+            <li>
+                <img id="img"
+                    src="https://tse4.mm.bing.net/th?id=OIP.lpUEuyn-tZIfzMvFqOJJ6AHaEK&pid=Api&P=0&w=318&h=180" alt="">
+            </li>
+            <li>
+                <div class="data">
+                    <h3 id="name">Belgium</h3>
+                    <div>
+                        <p id="nativeName"><strong>Native Name: </strong>Belgiê</p>
+                        <p id="population"><strong>Population: </strong>11,319,511</p>
+                        <p id="region"><strong>Region: </strong>Europe</p>
+                        <p id="subRegion"><strong>Sub Region: </strong>Western Europe</p>
+                        <p id="capital"><strong>Capital: </strong>Brussels</p>
+                    </div>
+                    <div>
+                        <p id="topLevelDomain"><strong>Top Level Domain: </strong>.be</p>
+                        <p id="currencies"><strong>Currencies: </strong>Euro</p>
+                        <p id="languages"><strong>Languages: </strong>Dutch, French, Germany</p>
+                    </div>
+                </div>
+                <div class="lowerData">
+                    <p class="border-countries"><strong>Border Countries:</strong>
+                        <div class="spanWrapper">
+                            <span class="borderCountries">France</span>
+                            <span class="borderCountries">Germany</span>
+                            <span class="borderCountries">Netherlands</span></div>
+               
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </section>
 </body>
-<script src="detailPage/script.js"></script>
+<script src="./detailPage/detailPage.js"></script>
+
 </html>
