@@ -54,6 +54,9 @@ body {
     flex-flow: row wrap;
     justify-content: space-between;
 }
+.b-inputs h2 {
+    display: none;
+}
 .b-inputs__searchBox {
     width: 500px;
     position: relative;
@@ -114,8 +117,7 @@ body {
     padding: 30px 20px;
 }
 .c-countries h2 {
-    text-align: center;
-    display: block;
+    display: none;
 }
 .c-countries__list {
     margin-top: 20px;

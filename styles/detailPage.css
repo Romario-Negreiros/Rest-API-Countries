@@ -53,7 +53,7 @@ body {
     width: 100%;
 }
 .b-country h2 {
-    text-align: center;
+    display: none;
 }
 .b-country a {
     display: block;
