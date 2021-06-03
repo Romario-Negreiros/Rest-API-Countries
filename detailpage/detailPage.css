@@ -72,7 +72,7 @@ body {
     margin-top: 40px;
     display: grid; 
     grid-template-columns: 480px 1fr;
-    grid-template-rows: 320px;
+    grid-template-rows: 400px;
     gap: 80px;
     list-style: none;
 }
@@ -87,7 +87,7 @@ body {
 .b-country__dataList > :nth-child(2) {
     padding: 25px 0;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     justify-content: space-between;
 }
 h3 {
@@ -97,12 +97,16 @@ h3 {
     font-size: 24px;
 } 
 .data {
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 .data p {
     font-size: 16px;
+    margin-top: 10px;
+}   
+.lowerData {
     margin-top: 10px;
 }
 .border-countries {
@@ -115,6 +119,7 @@ h3 {
 .borderCountries {
     display: inline-block;
     width: fit-content;
+    margin: 2.5px;
     padding: 5px 25px;
     background: var(--lightModeElements);
     box-shadow: var(--elementsShadowBottom),
@@ -139,4 +144,22 @@ h3 {
     background: var(--darkModeElements);
     box-shadow: none;
     color: var(--darkModeText);
+}
+@media (max-width: 1000px) {
+    .b-country__dataList {
+        gap: 0;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    .b-country__dataList > :nth-child(2) {
+        margin-top: 60px;
+    }
+    .spanWrapper {
+        margin-top: 10px;
+    }
+}
+@media (max-width: 570px) {
+    .data {
+        flex-flow: column wrap;
+    }
 }
