@@ -1,3 +1,5 @@
+/* Function to insert comma between the numbers of populations */
+import insertCommaBetweenNumbers from './module.js'
 /* Global Variables */
 /* Theme switch */
 const swapTheme = document.querySelector('#themeSwitch')
@@ -93,6 +95,7 @@ function lookForRegion(e) {
 /* Insert Information */
 function insertingInfos(v, i, neededData) {
     v[0].src = neededData[i][0]
+    v[0].alt = neededData[i][1]
     v[1].innerHTML = neededData[i][1]
     v[2].innerHTML = `<strong>Population: </strong>${neededData[i][2]}`
     v[3].innerHTML = `<strong>Region: </strong>${neededData[i][3]}`
@@ -123,7 +126,7 @@ function gettingDataFiltered(countries, searchWord) {
         })
     })
     const neededData = []
-    filterCountries.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
+    filterCountries.map(v => neededData.push([v.flag, v.name, insertCommaBetweenNumbers(v.population), v.region, v.capital]))
     const [...iterateItems] = countriesList.children
     const li = []
     iterateItems.map(v => li.push([...v.children]))

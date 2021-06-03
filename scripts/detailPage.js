@@ -1,3 +1,5 @@
+/* Function to insert comma between the numbers of populations */
+import insertCommaBetweenNumbers from './module.js'
 /* Global variables */
 const img = document.querySelector('#img')
 const countryName = document.querySelector('#name')
@@ -93,7 +95,7 @@ function filteringInfos(countries, countryNameToFetch) {
     const borderNames = filteredBorderCountries.map(v => v.name)
     const neededData = []
     filteredCountries.map(v => {
-        neededData.push(v.flag, v.name, v.nativeName, v.population,
+        neededData.push(v.flag, v.name, v.nativeName, insertCommaBetweenNumbers(v.population),
             v.region, v.subregion, v.capital)
     })
     const topLevelDomain = []
