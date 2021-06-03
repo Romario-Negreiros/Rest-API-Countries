@@ -52,14 +52,14 @@ search.addEventListener('click', () => {
     let string = input.value
     errorTreatment(string)
 })
-if(window.innerWidth < 770) {
+if (window.innerWidth < 770) {
     input.addEventListener('blur', () => {
-    while (countriesList.firstChild) {
-        countriesList.removeChild(countriesList.firstChild)
-    }
-    let string = input.value
-    errorTreatment(string)
-})
+        while (countriesList.firstChild) {
+            countriesList.removeChild(countriesList.firstChild)
+        }
+        let string = input.value
+        errorTreatment(string)
+    })
 }
 input.addEventListener('keydown', (key) => {
     while (countriesList.firstChild) {
@@ -107,8 +107,17 @@ function gettingDataFiltered(countries, searchWord) {
             else return false
         }
     })
-    console.log(filterCountries.length)
     for (let x in filterCountries) new item()
+    const [...addingEvents] = countriesList.children
+    addingEvents.forEach(v => {
+        v.addEventListener('click', () => {
+            if (typeof (Storage) !== 'undefined') {
+                const name = document.querySelector('li h3').innerHTML
+                sessionStorage.setItem('countryNameToFetch', name)
+                window.location.assign('./detailPage.html')
+            } else alert('Sorry, but your browser doesn\'t support HTML5 web storage')
+        })
+    })
     const neededData = []
     filterCountries.map(v => neededData.push([v.flag, v.name, v.population, v.region, v.capital]))
     const [...iterateItems] = countriesList.children

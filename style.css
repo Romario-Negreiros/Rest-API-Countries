@@ -127,6 +127,7 @@ body {
     padding-bottom: 35px;
     box-shadow: var(--elementsShadowBottom),
     var(--elementsShadowTop);
+    cursor: pointer;
 }
 .c-countries__list li img {
     max-width: 100%;
