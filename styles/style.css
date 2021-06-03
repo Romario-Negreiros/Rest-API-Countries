@@ -113,7 +113,12 @@ body {
     height: fit-content;
     padding: 30px 20px;
 }
+.c-countries h2 {
+    text-align: center;
+    display: block;
+}
 .c-countries__list {
+    margin-top: 20px;
     width: 100%;
     list-style: none;
     display: grid;
