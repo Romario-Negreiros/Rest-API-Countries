@@ -21,7 +21,7 @@
 
 # This was my first ever challenge on front-end mentor, I finished this project in 4 days, from 31/05/2021 to 03/06/2021, I didn't expect to make this to end that quick, as this challenge is considered an advanced level project, but I think I did well, at least for the first time 🤷‍♂️
 
-* [My Website](https://meu-portfolio-izui59udw-romario-negreiros.vercel.app)
+* [My Website](https://romario-negreiros.github.io/Romario-frontend/)
 
 
 
