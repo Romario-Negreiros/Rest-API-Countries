@@ -36,7 +36,7 @@ class item {
 }
 /* Requests */
 const fetchCountries = async function () {
-    const response = await fetch('https://restcountries.eu/rest/v2/all')
+    const response = await fetch('https://restcountries.com/v2/all')
     const JSON = await response.json()
     return JSON
 }
@@ -47,6 +47,7 @@ const errorTreatment = async function (searchWord) {
     }
     catch (err) {
         console.error(err.message)
+        window.alert('An error happened!')
     }
 }
 /* Search mechanisms */
@@ -106,7 +107,8 @@ function gettingDataFiltered(countries, searchWord) {
     let lowerCase = ''
     let firstLetterUpperCased = ''
     const filterCountries = countries.filter((v) => {
-        if (searchWord === v.region) return v
+        if (!searchWord) return v
+        else if (searchWord === v.region) return v
         else {
             lowerCase = searchWord.slice(+1).toLowerCase()
             firstLetterUpperCased = searchWord.charAt(0).toUpperCase()
@@ -135,15 +137,27 @@ function gettingDataFiltered(countries, searchWord) {
     })
 }
 /* Theme switch */
-swapTheme.addEventListener('click', () => {
-    /* Change elements back, body back, and body text */
-    document.body.classList.toggle('body--active')
-    document.querySelector('.a-header').classList.toggle('a-header--active')
-    countriesList.classList.toggle('c-countries__list--active')
-    input.classList.toggle('input--active')
-    filter.classList.toggle('filter--active')
-    document.querySelector('.dropdown').classList.toggle('dropdown--active')
-    /* Change icon for sun and span text for light mode */
-    document.querySelector('.darkMode').classList.toggle('moon-inative')
-    document.querySelector('.lightMode').classList.toggle('sun-active')
+let theme = 'light'
+
+function changeTheme() {
+  theme === 'light' ? (theme = 'dark') : (theme = 'light')
+  localStorage.setItem('theme', theme)
+  document.body.classList.toggle('body--active')
+  document.querySelector('.a-header').classList.toggle('a-header--active')
+  countriesList.classList.toggle('c-countries__list--active')
+  input.classList.toggle('input--active')
+  filter.classList.toggle('filter--active')
+  document.querySelector('.dropdown').classList.toggle('dropdown--active')
+  /* Change icon for sun and span text for light mode */
+  document.querySelector('.darkMode').classList.toggle('moon-inative')
+  document.querySelector('.lightMode').classList.toggle('sun-active')
+}
+
+window.addEventListener('load', () => {
+    const theme = localStorage.getItem('theme')
+    errorTreatment()
+    if (theme === 'dark') {
+        changeTheme()
+    }
 })
+swapTheme.addEventListener('click', changeTheme)
