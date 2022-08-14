@@ -160,6 +160,15 @@ body {
 .c-countries__list li :nth-child(n + 3) {
     margin-top: 10px;
 }
+.c-countries__exception {
+    display: none;
+    text-align: center;
+    color: rgb(231, 36, 36);
+    font-size: 20px;
+}
+.c-countries__exception--active {
+    display: block;
+}
 /* Color switch */
 .lightMode {
     display: none;
